@@ -1012,3 +1012,45 @@ html[data-theme='dark'] .ask-button:hover {
     height: 1.25rem;
     fill: currentColor;
 }
+#floating-timer {
+  position: fixed;
+  top: 100px;
+  left: 100px;
+  z-index: 9999;
+  background: #1f2937;
+  color: white;
+  padding: 10px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  width: 140px;
+  font-family: monospace;
+  cursor: move;
+  user-select: none;
+}
+
+#timer-display {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+#floating-timer button {
+  width: 34px;
+  height: 34px;
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#floating-timer button:hover {
+  background: #2563eb;
+}

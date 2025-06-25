@@ -204,3 +204,82 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+let countdownSeconds = 0;
+let countdownInterval = null;
+let isCounting = false;
+
+function updateDisplay() {
+  const hrs = String(Math.floor(countdownSeconds / 3600)).padStart(2, '0');
+  const mins = String(Math.floor((countdownSeconds % 3600) / 60)).padStart(2, '0');
+  const secs = String(countdownSeconds % 60).padStart(2, '0');
+  document.getElementById('timer-display').textContent = `${hrs}:${mins}:${secs}`;
+}
+
+function startCountdown() {
+  if (countdownSeconds <= 0) return;
+  isCounting = true;
+  document.getElementById('timer-toggle').textContent = '⏸';
+  countdownInterval = setInterval(() => {
+    if (countdownSeconds > 0) {
+      countdownSeconds--;
+      updateDisplay();
+    } else {
+      clearInterval(countdownInterval);
+      isCounting = false;
+      document.getElementById('timer-toggle').textContent = '▶';
+      alert("⏰ Hết giờ  rùii ạ!");
+    }
+  }, 1000);
+}
+
+function stopCountdown() {
+  isCounting = false;
+  clearInterval(countdownInterval);
+  document.getElementById('timer-toggle').textContent = '▶';
+}
+
+document.getElementById('timer-toggle').onclick = () => {
+  isCounting ? stopCountdown() : startCountdown();
+};
+
+document.getElementById('timer-add').onclick = () => {
+  countdownSeconds += 60;
+  updateDisplay();
+};
+
+document.getElementById('timer-subtract').onclick = () => {
+  countdownSeconds = Math.max(0, countdownSeconds - 60);
+  updateDisplay();
+};
+
+updateDisplay();
+
+// Kéo widget
+(function dragElement(el) {
+  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  el.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e) {
+    if (e.target.tagName === "BUTTON") return;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    el.style.top = (el.offsetTop - pos2) + "px";
+    el.style.left = (el.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+})(document.getElementById("floating-timer"));
