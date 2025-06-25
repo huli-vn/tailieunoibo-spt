@@ -1,0 +1,1014 @@
+/* style.css */
+
+/* Định nghĩa biến CSS cho chế độ sáng và tối */
+:root {
+    --bg-light: #f3f4f6; /* gray-100 */
+    --text-light: #1f2937; /* gray-900 */
+    --bg-card-light: #ffffff;
+    --text-card-light: #1f2937;
+    --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    --sidebar-bg: #ffffff; /* Đổi từ màu tối sang trắng */
+    --sidebar-text: #1f2937; /* Đổi màu chữ cho phù hợp nền trắng */
+    --sidebar-hover-bg: #f3f4f6; /* Màu hover nhẹ */
+    --sidebar-active-bg: #e5f3fd; /* Màu active nhẹ */
+    --sidebar-active-text: #2563eb;
+    --sidebar-icon: #6b7280; /* Màu icon tối hơn */
+    --sidebar-border: #e5e7eb; /* gray-700 */
+
+    --header-bg: #ffffff;
+    --header-text: #4b5563; /* gray-600 */
+    --search-bg: #e5e7eb; /* gray-100 */
+    --search-text: #1f2937;
+    --search-icon: #6b7280; /* gray-500 */
+    --search-focus-ring: #3b82f6; /* blue-500 */
+    --toggle-track-bg: #4b5563; /* gray-600 */
+    --toggle-thumb-bg: #ffffff;
+    --button-icon: #4b5563; /* gray-600 */
+
+    /* Card specific colors */
+    --blue-card-bg: #e0f2fe; /* blue-100 */
+    --blue-card-text: #1d4ed8; /* blue-700 */
+    --green-card-bg: #dcfce7; /* green-100 */
+    --green-card-text: #166534; /* green-700 */
+    --yellow-card-bg: #fef9c3; /* yellow-100 */
+    --yellow-card-text: #b45309; /* yellow-700 */
+    --red-card-bg: #fee2e2; /* red-100 */
+    --red-card-text: #b91c1c; /* red-700 */
+    --purple-card-bg: #f3e8ff; /* purple-100 */
+    --purple-card-text: #7e22ce; /* purple-700 */
+
+    --user-level-bg: #eff6ff; /* blue-100 */
+    --user-level-text: #2563eb; /* blue-700 */
+
+    /* New colors for video and lesson sections */
+    --video-bg: #1f2937; /* Example dark background for video player */
+    --video-play-button-fill: #ff0000; /* YouTube red */
+    --video-play-button-hover: #cc0000;
+    --lesson-list-bg: #f9fafb; /* Lighter background for lesson list */
+    --lesson-item-hover-bg: #e5e7eb; /* Gray-200 for hover */
+    --lesson-item-active-bg: #e0f2fe; /* Blue-100 for active */
+    --lesson-item-active-text: #2563eb; /* Blue-600 for active text */
+    --lesson-border: #e5e7eb; /* Border color for lesson items */
+}
+
+html[data-theme='dark'] {
+    --bg-light: #181f2a;
+    --text-light: #f3f4f6;
+    --bg-card-light: #1f2937; /* gray-800 */
+    --text-card-light: #f3f4f6;
+    --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+
+    --sidebar-bg: #232b38;
+    --sidebar-text: #f3f4f6;
+    --sidebar-hover-bg: #1f2937; /* gray-800 */
+    --sidebar-active-bg: #2563eb; /* blue-600 */
+    --sidebar-active-text: #ffffff;
+    --sidebar-icon: #9ca3af; /* gray-400 */
+    --sidebar-border: #4b5563; /* gray-700 */
+
+    --header-bg: #232b38;
+    --header-text: #f3f4f6;
+    --search-bg: #232b38;
+    --search-text: #f3f4f6;
+    --search-icon: #9ca3af; /* gray-400 */
+    --search-focus-ring: #3b82f6; /* blue-500 */
+    --toggle-track-bg: #374151; /* gray-700 */
+    --toggle-thumb-bg: #d1d5db; /* gray-300 */
+    --button-icon: #e5e7eb; /* gray-200 */
+
+    /* Card specific colors for dark mode */
+    --blue-card-bg: #1e3a8a; /* blue-900 */
+    --blue-card-text: #bfdbfe; /* blue-200 */
+    --green-card-bg: #064e3b; /* green-900 */
+    --green-card-text: #a7f3d0; /* green-200 */
+    --yellow-card-bg: #4c2805; /* yellow-900 */
+    --yellow-card-text: #fde68a; /* yellow-200 */
+    --red-card-bg: #7f1d1d; /* red-900 */
+    --red-card-text: #fecaca; /* red-200 */
+    --purple-card-bg: #3b0764; /* purple-900 */
+    --purple-card-text: #e9d5ff; /* purple-200 */
+
+    --user-level-bg: #1e3a8a; /* blue-900 */
+    --user-level-text: #bfdbfe; /* blue-200 */
+
+    /* New colors for video and lesson sections in dark mode */
+    --video-bg: #111827; /* Even darker for video in dark mode */
+    --lesson-list-bg: #1f2937; /* Gray-800 for lesson list in dark mode */
+    --lesson-item-hover-bg: #374151; /* Gray-700 for hover */
+    --lesson-item-active-bg: #1e3a8a; /* Blue-900 for active */
+    --lesson-item-active-text: #93c5fd; /* Blue-300 for active text */
+    --lesson-border: #4b5563; /* Darker border color */
+}
+
+/* Base styles */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex; /* Đảm bảo body là flex container */
+    flex-direction: row; /* Sidebar bên trái, content bên phải */
+}
+
+/* General Link/Button Reset */
+a, button {
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Shadow utilities */
+.shadow-md { box-shadow: var(--shadow-light); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+.shadow-inner { box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); }
+
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px; /* Rộng hơn để giống ảnh */
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    z-index: 50;
+    border-radius: 0; /* Không bo góc trái */
+    box-shadow: 2px 0 16px 0 rgba(0,0,0,0.04); /* Bóng đổ nhẹ bên phải */
+    border-right: 1px solid #e5e7eb;           /* Đường viền phải nhẹ */
+    align-items: flex-start;
+    padding: 0;
+    transition: none;
+    transform: none;
+}
+
+@media (max-width: 1023px) {
+    .sidebar {
+        width: 260px;
+    }
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+@media (max-width: 767px) { /* Mobile only */
+    .sidebar {
+        transform: translateX(-100%); /* Hidden by default on mobile */
+        transition: transform 0.3s ease-in-out;
+        width: 100%; /* Take full width when open on mobile */
+        max-width: 320px; /* Limit width even if open */
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .main-content-area {
+        margin-left: 0; /* No margin on mobile */
+    }
+}
+
+@media (min-width: 768px) { /* md */
+    .sidebar {
+        transform: translateX(0);
+    }
+    .main-content-area {
+        margin-left: 320px; /* Đúng bằng width sidebar */
+    }
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding-left: 0.5rem; /* pl-2 */
+    margin-top: 1.25rem;   /* Thêm dòng này để đẩy xuống */
+}
+
+.sidebar-logo {
+    background-color: #3b82f6; /* blue-500 */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.5rem;
+    margin-right: 0.25rem;
+}
+
+.sidebar-logo svg {
+    width: 1.5rem; /* w-6 */
+    height: 1.5rem; /* h-6 */
+    color: #ffffff; /* text-white */
+}
+
+.sidebar-brand {
+    font-size: 1.75rem; /* text-2xl */
+    font-weight: 800;
+    color: #3b82f6;
+    letter-spacing: 0.08em;
+}
+
+
+.sidebar-nav {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.sidebar-nav-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.nav-item {
+    /* Updated: Adjusted margin-bottom for tighter list */
+    margin-bottom: 0; /* Reduced from 0.25rem */
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;    /* Giảm padding hai bên */
+    border-radius: 0.75rem;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+.nav-link:hover {
+    background-color: #f3f4f6;
+    color: #2563eb;
+}
+
+.nav-item.active .nav-link {
+    background: #3b82f6;
+    color: #fff;
+    border-radius: 0.75rem;
+    transition: background 0.2s;
+}
+
+.nav-item.active .nav-link svg {
+    color: #fff;
+}
+
+.nav-item.active .nav-link {
+    background: #e5f3fd;
+    color: #2563eb;
+    font-weight: 700;
+    border-radius: 1rem;
+    /* Xóa hoặc comment dòng border nếu có */
+    /* border: 1px solid #222; */
+    /* border: none; */
+    box-shadow: none;
+}
+
+.nav-link svg {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    margin-right: 0.4rem; /* Giảm từ 0.75rem xuống 0.4rem */
+    background: none !important;
+    color: inherit;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-item.active .nav-link svg {
+    color: var(--sidebar-active-text);
+}
+
+.nav-link-toggle {
+    display: flex;
+    justify-content: flex-start; /* Sửa lại dòng này */
+    align-items: center;
+}
+
+.nav-link-toggle .arrow-icon {
+    width: 1rem; /* w-4 */
+    height: 1rem; /* h-4 */
+    margin-left: auto;
+    transition: transform 0.2s;
+}
+
+.nav-item.has-submenu.open .nav-link-toggle .arrow-icon {
+    transform: rotate(90deg);
+}
+
+.submenu {
+    list-style: none;
+    /* Updated: Adjusted margin-left for closer submenu */
+    margin: 0.25rem 0 0 1.5rem; /* ml-6 instead of ml-8 */
+    border-left: 1px solid var(--sidebar-border);
+    padding-left: 0.5rem; /* pl-2 */
+    overflow: hidden; /* Hide by default */
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu.open {
+    max-height: 500px; /* Adjust as needed to fit content */
+}
+
+.submenu-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem; /* text-sm */
+    transition: background-color 0.2s;
+}
+
+.submenu-link:hover {
+    background-color: var(--sidebar-hover-bg);
+}
+
+/* Main Content Area */
+.main-content-area {
+    flex: 1;
+    margin-left: 320px; /* Đúng bằng width sidebar */
+    border-radius: 0 1.25rem 0 0;
+    background: #fff;
+    min-height: 100vh;
+    box-shadow: none;
+    padding: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 1.5rem;
+    min-height: 56px;
+}
+
+@media (max-width: 767px) {
+    .header {
+        padding: 0.5rem 1rem; /* Adjust padding for mobile */
+        gap: 0.5rem; /* Smaller gap */
+    }
+    .search-bar-container {
+        display: none; /* Hide search bar on small screens */
+    }
+    .header-actions {
+        gap: 0.5rem; /* Smaller gap for actions */
+    }
+    .header-brand {
+        display: none; /* Hide brand on mobile when sidebar is open */
+    }
+    .header-left {
+        min-width: unset;
+        flex-grow: 1;
+    }
+    .breadcrumb {
+        font-size: 0.875rem;
+    }
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 180px;
+}
+
+.header-logo {
+    height: 2.2rem;
+    width: auto;
+    margin-right: 0.25rem;
+}
+
+.header-brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #3b82f6;
+    letter-spacing: 0.04em;
+}
+
+.search-bar-container {
+    flex: 1 1 600px;
+    max-width: 600px;
+    margin: 0 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    border-radius: 9999px;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    outline: none;
+    border: 1px solid #e5e7eb;
+    transition: box-shadow 0.2s, background-color 0.2s;
+    box-shadow: none;
+}
+
+.search-bar:focus {
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #9ca3af;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 180px;
+    justify-content: flex-end;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dark-mode-toggle-track {
+    position: relative;
+    width: 3.5rem; /* w-14 */
+    height: 2rem; /* h-8 */
+    background-color: var(--toggle-track-bg);
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: var(--shadow-inner);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.dark-mode-toggle-thumb {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem; /* w-8 */
+    height: 2rem; /* h-8 */
+    background-color: var(--toggle-thumb-bg);
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: var(--shadow-md);
+    transform: translateX(0);
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hide checkbox visually */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.dark-mode-toggle-label input:checked + .dark-mode-toggle-track .dark-mode-toggle-thumb {
+    transform: translateX(1.5rem); /* translate-x-full equivalent for 3.5rem track - 2rem thumb */
+    background-color: var(--toggle-thumb-bg); /* Still white/light gray in dark mode */
+}
+
+.sun-icon {
+    display: block;
+}
+
+.moon-icon {
+    display: none;
+}
+
+html[data-theme='dark'] .sun-icon {
+    display: none;
+}
+
+html[data-theme='dark'] .moon-icon {
+    display: block;
+}
+
+
+.icon-button {
+    padding: 0.5rem;
+    border-radius: 9999px; /* rounded-full */
+    transition: background-color 0.2s;
+    color: var(--button-icon);
+}
+
+.icon-button:hover {
+    background-color: var(--search-bg); /* gray-100 or gray-700 */
+}
+
+.icon-button svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.user-avatar-container {
+    position: relative;
+}
+
+.user-avatar {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px; /* rounded-full */
+    cursor: pointer;
+    border: 2px solid #e5e7eb;
+    transition: border-color 0.2s;
+}
+
+.user-avatar:hover {
+    border-color: #3b82f6; /* blue-500 */
+}
+
+.online-indicator {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0.75rem; /* w-3 */
+    height: 0.75rem; /* h-3 */
+    background-color: #22c55e; /* green-500 */
+    border-radius: 9999px; /* rounded-full */
+    border: 2px solid var(--bg-card-light); /* border-2 border-white / dark:border-gray-800 */
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    font-size: 0.95rem;
+    color: var(--search-icon);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.breadcrumb .current-page {
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+/* Mobile only sidebar toggle */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .mobile-only {
+        display: block;
+    }
+}
+
+
+/* Main content sections */
+.main-content {
+    flex-grow: 1;
+    padding: 1rem; /* p-4 */
+    display: flex;
+    flex-direction: column;
+    /* Updated: Maintain general gap, adjust specifics in child elements if needed */
+    gap: 2.5rem; /* Tăng khoảng cách từ space-y-8 (2rem) lên 2.5rem */
+}
+
+@media (min-width: 768px) { /* md */
+    .main-content {
+        padding: 2rem; /* md:p-8 */
+    }
+}
+
+/* Video and Lesson specific styles */
+.video-lesson-content {
+    display: flex;
+    flex-direction: column; /* Stack vertically on small screens */
+    padding: 1.5rem;
+    gap: 1.5rem;
+    flex-grow: 1;
+}
+
+@media (min-width: 1024px) { /* lg */
+    .video-lesson-content {
+        flex-direction: row; /* Side-by-side on larger screens */
+        padding: 2rem;
+        gap: 2rem;
+    }
+}
+
+.video-player-container {
+    flex: 2; /* Takes 2 parts of available space */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-card-light);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.video-player {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (height/width * 100%) */
+    background-color: var(--video-bg);
+}
+
+.youtube-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem; /* Rounded corners for the iframe */
+}
+
+.video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem; /* Rounded corners for the placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--video-bg); /* Use video background color */
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.play-button-bg {
+    fill: var(--video-play-button-fill);
+    transition: fill 0.2s ease-in-out;
+}
+
+.play-button:hover .play-button-bg {
+    fill: var(--video-play-button-hover);
+}
+
+.play-button-icon {
+    fill: #ffffff;
+}
+
+.video-overlay-text {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.overlay-text-item {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.overlay-text-item.youtube {
+    background-color: #ff0000;
+}
+
+.youtube-icon {
+    width: 1rem;
+    height: 1rem;
+    fill: #ffffff;
+}
+
+.video-title-section {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 1px solid var(--lesson-border); /* Separator */
+}
+
+.video-main-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-card-light);
+    margin: 0;
+}
+
+.video-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+.video-action-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--search-icon);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.video-action-button:hover {
+    color: var(--text-light);
+    background-color: var(--search-bg);
+}
+
+.video-action-button svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: currentColor;
+}
+
+.video-description {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-card-light);
+}
+
+.video-description p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.ask-button {
+    background-color: #e0f2fe; /* Blue-100 */
+    color: #2563eb; /* Blue-600 */
+    padding: 0.5rem 1rem;
+    border-radius: 1.25rem; /* Rounded-full */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: 0 1px 4px 0 rgba(59,130,246,0.08);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+html[data-theme='dark'] .ask-button {
+    background-color: #1e3a8a; /* Blue-900 */
+    color: #93c5fd; /* Blue-300 */
+    box-shadow: none;
+}
+
+.ask-button:hover {
+    background-color: #cce9fd; /* Lighter blue on hover */
+    box-shadow: 0 2px 8px 0 rgba(59,130,246,0.12);
+}
+
+html[data-theme='dark'] .ask-button:hover {
+    background-color: #1c3278; /* Slightly darker blue on hover in dark mode */
+}
+
+.ask-button svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+}
+
+
+/* Lesson List */
+.lesson-list-container {
+    flex: 1; /* Takes 1 part of available space */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-card-light);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-md);
+    overflow: hidden; /* For rounded corners */
+}
+
+.lesson-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--lesson-border);
+    background-color: var(--lesson-list-bg);
+}
+
+.lesson-list-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-card-light);
+    margin: 0;
+}
+
+.lesson-count {
+    font-size: 0.9rem;
+    color: var(--search-icon);
+}
+
+.lesson-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto; /* Scrollable if content overflows */
+}
+
+.lesson-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--lesson-border);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.lesson-item:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+
+.lesson-item:hover {
+    background-color: var(--lesson-item-hover-bg);
+}
+
+.lesson-item.active {
+    background-color: var(--lesson-item-active-bg);
+    color: var(--lesson-item-active-text);
+    font-weight: 600;
+}
+
+.lesson-item.active .lesson-title,
+.lesson-item.active .lesson-number {
+    color: var(--lesson-item-active-text);
+}
+
+.lesson-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-grow: 1;
+}
+
+.lesson-number {
+    font-size: 0.9rem;
+    color: var(--text-card-light);
+}
+
+.lesson-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-title {
+    font-size: 0.95rem;
+    color: var(--text-card-light);
+}
+
+.lesson-progress {
+    font-size: 0.8rem;
+    color: var(--search-icon);
+}
+
+.lesson-item.active .lesson-progress {
+    color: var(--lesson-item-active-text); /* Ensure progress also changes color */
+}
+
+.lesson-arrow {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor; /* Use current text color */
+    margin-left: 0.5rem;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 200; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    /* Removed: display: flex; as it was causing the modal to appear on load */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--bg-card-light);
+    margin: auto;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-xl);
+    width: 90%; /* Responsive width */
+    max-width: 800px; /* Max width for larger screens */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.close-button {
+    color: var(--text-light);
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 210; /* Above iframe */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: #000; /* Black background for video area */
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.modal-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.download-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #2563eb; /* Blue-600 */
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    margin-top: 0.5rem; /* Space between video and button */
+}
+
+.download-button:hover {
+    background-color: #1d4ed8; /* Blue-700 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.download-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+}
